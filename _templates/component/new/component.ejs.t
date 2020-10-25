@@ -4,12 +4,12 @@ to: src/components/<%= componentName %>/<%= componentName %>.tsx
 import React from 'react';
 import styled from 'styled-components';
 
-export interface <%= h.changeCase.pascalCase(componentName) %>Props {
+export interface An<%= h.changeCase.pascalCase(componentName) %>ComponentProps {
     title: string;
     exampleProp: string;
 }
 
-const <%= h.changeCase.pascalCase(componentName) %> = ({ exampleProp }: <%= h.changeCase.pascalCase(componentName) %>Props) => {
+const An<%= h.changeCase.pascalCase(componentName) %> = ({ exampleProp }: An<%= h.changeCase.pascalCase(componentName) %>ComponentProps) => {
     return (
         <BeautifulDiv>
             <p>1) Hello {exampleProp}! Edit me</p>
@@ -23,4 +23,4 @@ const BeautifulDiv = styled.div`
     text-align: center;
 `;
 
-export default <%= h.changeCase.pascalCase(componentName) %>;
+export default An<%= h.changeCase.pascalCase(componentName) %>;

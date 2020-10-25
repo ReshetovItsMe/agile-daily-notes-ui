@@ -4,7 +4,7 @@ import MailIcon from '@material-ui/icons/Mail';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import Divider from '@material-ui/core/Divider';
-import AnDrawer, { AnDrawerType } from '../../components/drawer';
+import AnDrawer, { AnDrawerProps } from '../../components/drawer';
 
 export default {
     title: 'Drawer',
@@ -14,7 +14,7 @@ export default {
     }
 };
 
-export const DrawerStory = (args: AnDrawerType) => (
+export const DrawerStory = (args: AnDrawerProps) => (
     <AnDrawer {...args}>
         <List>
             <ListItem button>

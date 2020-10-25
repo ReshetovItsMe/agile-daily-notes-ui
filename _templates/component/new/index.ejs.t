@@ -1,7 +1,7 @@
 ---
 to: src/components/<%= componentName %>/index.ts
 ---
-import <%= h.changeCase.pascalCase(componentName) %>, { <%= h.changeCase.pascalCase(componentName) %>Props } from './<%= componentName %>';
+import <%= h.changeCase.pascalCase(componentName) %>, { An<%= h.changeCase.pascalCase(componentName) %>ComponentProps } from './<%= componentName %>';
 
-export type <%= h.changeCase.pascalCase(componentName) %>Type = <%= h.changeCase.pascalCase(componentName) %>Props;
+export interface An<%= h.changeCase.pascalCase(componentName) %>Props extends An<%= h.changeCase.pascalCase(componentName) %>ComponentProps {}
 export default <%= h.changeCase.pascalCase(componentName) %>;

@@ -1,4 +1,4 @@
-import AnDrawer, { AnDrawerProps } from './drawer';
+import AnDrawer, { AnDrawerComponentProps } from './drawer';
 
-export type AnDrawerType = AnDrawerProps;
+export interface AnDrawerProps extends AnDrawerComponentProps {}
 export default AnDrawer;

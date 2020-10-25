@@ -2,12 +2,12 @@ import React, { ReactNode } from 'react';
 import styled from 'styled-components';
 import { Drawer } from '@material-ui/core';
 
-export interface AnDrawerProps {
+export interface AnDrawerComponentProps {
     anchor: 'left' | 'top' | 'right' | 'bottom' | undefined;
     children?: ReactNode;
 }
 
-const AnDrawer: React.FC<AnDrawerProps> = (props) => {
+const AnDrawer: React.FC<AnDrawerComponentProps> = (props) => {
     const { children, ...restProps } = props;
     return (
         <AnDrawerStyled variant="permanent" {...restProps}>
