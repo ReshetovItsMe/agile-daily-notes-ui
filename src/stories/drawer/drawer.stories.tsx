@@ -10,7 +10,17 @@ export default {
     title: 'Drawer',
     component: AnDrawer,
     argTypes: {
-        anchor: { control: 'text' }
+        anchor: {
+            control: {
+                type: 'inline-radio',
+                options: ['left', 'right', 'bottom', 'top']
+            },
+            defaultValue: 'left',
+            table: {
+                type: { summary: 'Side from which the drawer will appear.' },
+                defaultValue: { summary: 'left' }
+            }
+        }
     }
 };
 
