@@ -9,7 +9,15 @@ export default {
     title: '<%= h.changeCase.pascalCase(componentName) %>',
     component: An<%= h.changeCase.pascalCase(componentName) %>,
     argTypes: {
-        exampleProp: { control: 'text' }
+        exampleProp: { control: 'text' },
+        defaultValue: 'This is test component',
+        table: {
+            type: {
+                summary:
+                    'This is test component.'
+            },
+            defaultValue: { summary: 'This is test component' }
+        }
     }
 };
 
