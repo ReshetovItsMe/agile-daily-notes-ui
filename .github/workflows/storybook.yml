@@ -9,9 +9,9 @@ jobs:
         with:
           node-version: 14
       - name: 📟 Downloading dependencies...
-        run: npm install
+        run: yarn install
       - name: 🕹 Deploy Storybook to GitHub pages
-        run: npm run deploy-storybook -- --ci
+        run: yarn deploy-storybook -- --ci
         env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
