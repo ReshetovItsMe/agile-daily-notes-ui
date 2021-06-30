@@ -1,0 +1,18 @@
+name: GitHub Actions Demo
+on: [push]
+jobs:
+  Explore-GitHub-Actions:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+      - run: echo "Downloading dependencies..."
+      - uses: actions/checkout@v2
+      - uses: borales/actions-yarn@v2.3.0
+        with:
+          cmd: install # will run `yarn install` command
+      - run: echo "Deploy Storybook to GitHub pages"
+      - uses: borales/actions-yarn@v2.3.0
+        with:
+          cmd: deploy-storybook # will run `yarn build` command
+      - run: echo "🍏 This job's status is ${{ job.status }}."
