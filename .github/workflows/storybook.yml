@@ -4,14 +4,13 @@ jobs:
   Deploy-Storybook-To-Pages:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Checkout 🛎️"
+      - run: echo "Checkout 🛎️ and setup"
       - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 14
       - run: echo "📟 Downloading dependencies..."
-      - uses: borales/actions-yarn@v2.3.0
-        with:
-          cmd: install
+      - run: npm install
       - run: echo "🕹 Deploy Storybook to GitHub pages"
-      - uses: borales/actions-yarn@v2.3.0
-        with:
-          cmd: deploy-storybook -- --ci --host-token-env-variable=TOKEN
+      - run: npm run deploy-storybook -- --ci --host-token-env-variable=GITHUB_TOKEN
       - run: echo "🍏 This job's status is ${{ job.status }}."
