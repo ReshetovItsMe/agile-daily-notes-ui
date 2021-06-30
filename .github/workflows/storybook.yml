@@ -8,15 +8,13 @@ jobs:
   Deploy-Storybook-To-Pages:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
-      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
-      - run: echo "Downloading dependencies..."
       - uses: actions/checkout@v2
-      - uses: borales/actions-yarn@v2.3.0
+      - uses: actions/setup-node@v2
         with:
-          cmd: install
-      - run: echo "Deploy Storybook to GitHub pages"
-      - uses: borales/actions-yarn@v2.3.0
-        with:
-          cmd: deploy-storybook:ci
-      - run: echo "🍏 This job's status is ${{ job.status }}."
+          node-version: 14
+      - name: 📟 Downloading dependencies...
+        run: yarn install
+      - name: 🕹 Deploy Storybook to GitHub pages
+        run: yarn deploy-storybook -- --ci
+        env:
+          GH_TOKEN: ${{ github.actor }}:${{ secrets.TOKEN }}
