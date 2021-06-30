@@ -10,9 +10,8 @@ jobs:
       - uses: borales/actions-yarn@v2.3.0
         with:
           cmd: install
-      - run: echo "🕹 Deploy Storybook to GitHub pages ${{ secrets.GITHUB_TOKEN }}"
+      - run: echo "🕹 Deploy Storybook to GitHub pages"
       - uses: borales/actions-yarn@v2.3.0
         with:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          cmd: deploy-storybook -- --ci
+          cmd: deploy-storybook -- --ci --host-token-env-variable=TOKEN
       - run: echo "🍏 This job's status is ${{ job.status }}."
