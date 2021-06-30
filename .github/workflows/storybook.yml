@@ -13,5 +13,5 @@ jobs:
       - name: 🕹 Deploy Storybook to GitHub pages
         run: yarn deploy-storybook -- --ci
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ github.actor }}:${{ secrets.TOKEN }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
