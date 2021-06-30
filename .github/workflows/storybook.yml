@@ -14,5 +14,5 @@ jobs:
       - run: echo "Deploy Storybook to GitHub pages"
       - uses: borales/actions-yarn@v2.3.0
         with:
-          cmd: deploy-storybook -- --ci
+          cmd: deploy-storybook -- --ci --host-token-env-variable=GITHUB_TOKEN
       - run: echo "🍏 This job's status is ${{ job.status }}."
