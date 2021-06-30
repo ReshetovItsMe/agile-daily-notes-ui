@@ -1,14 +1,18 @@
-# AGILE DAILY NOTES.
+# AGILE DAILY NOTES
+
+You can found storybook on [GitHub Pages](https://github.com/ReshetovItsMe/agile-daily-notes-ui)
 
 ## Available Scripts
 
 In the project directory, you can run:
 
 ### `yarn storybook`
+
 Runs Storybook with all components
 Open [http://localhost:6006](http://localhost:6006) to view it in the browser.
 
 ### `yarn component`
+
 Generate new component
 
 ### `yarn start`

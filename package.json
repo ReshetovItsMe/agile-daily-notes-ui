@@ -1,5 +1,5 @@
 {
-    "name": "ui-foodmarket",
+    "name": "agile-notes",
     "version": "0.1.0",
     "private": true,
     "scripts": {
@@ -12,7 +12,8 @@
         "lint": "eslint src --ext .ts,.tsx,.js,.jsx src/",
         "lint:styled": "stylelint src/**/*.{js,tsx}",
         "prettier": "prettier --write \"src/**/*.{ts,js,tsx,jsx}\"",
-        "component": "hygen component new"
+        "component": "hygen component new",
+        "deploy-storybook": "storybook-to-ghpages"
     },
     "dependencies": {
         "@material-ui/core": "^4.11.0",
@@ -39,6 +40,7 @@
         "@storybook/node-logger": "^6.0.16",
         "@storybook/preset-create-react-app": "^3.1.4",
         "@storybook/react": "^6.0.16",
+        "@storybook/storybook-deployer": "^2.8.10",
         "@types/jest": "^25.1.2",
         "@types/js-cookie": "^2.2.5",
         "@types/node": "^13.7.1",
