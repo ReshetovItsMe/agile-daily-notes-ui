@@ -13,7 +13,8 @@
         "lint:styled": "stylelint src/**/*.{js,tsx}",
         "prettier": "prettier --write \"src/**/*.{ts,js,tsx,jsx}\"",
         "component": "hygen component new",
-        "deploy-storybook": "storybook-to-ghpages"
+        "deploy-storybook": "storybook-to-ghpages",
+        "deploy-storybook:ci": "storybook-to-ghpages -- --ci --host-token-env-variable=GITHUB_TOKEN"
     },
     "dependencies": {
         "@material-ui/core": "^4.11.0",
