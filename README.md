@@ -1,6 +1,6 @@
 # AGILE DAILY NOTES
 
-You can found storybook on [GitHub Pages](https://github.com/ReshetovItsMe/agile-daily-notes-ui)
+You can found storybook on [GitHub Pages](https://reshetovitsme.github.io/agile-daily-notes-ui)
 
 ## Available Scripts
 
