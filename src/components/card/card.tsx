@@ -1,21 +1,32 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { Button, Paper, PaperProps, TextField } from '@material-ui/core';
+import {
+    Button,
+    IconButton,
+    Paper,
+    PaperProps,
+    TextField
+} from '@material-ui/core';
+import DeleteOutlinedIcon from '@material-ui/icons/DeleteOutlined';
 
 export interface AnCardComponentProps extends PaperProps {
+    id: string;
     number: number;
     title: string;
     description: string;
+    onDeleteClick: (id: string) => void;
     onSaveClick: (value: string) => void;
     editable?: boolean;
 }
 
 const AnCard = ({
+    id,
     number,
     title,
     description,
     editable,
     onSaveClick,
+    onDeleteClick,
     ...restProps
 }: AnCardComponentProps) => {
     const [isEditable, setIsEditable] = useState<boolean | undefined>(editable);
@@ -28,6 +39,7 @@ const AnCard = ({
     const onDescriptionDoubleClickHandler = () => setIsEditable(!isEditable);
     const onCancelClickHandler = () => setIsEditable(false);
     const onSaveClickHandler = () => onSaveClick(text);
+    const onDeleteClickHandler = () => onDeleteClick(id);
 
     return (
         <StyledPaper {...restProps}>
@@ -35,20 +47,29 @@ const AnCard = ({
                 <HeaderContainer>
                     <Number>{number}</Number>
                     <Title>{title}</Title>
-                    {isEditable && (
-                        <ButtonsContainer>
-                            <StyledButton onClick={onCancelClickHandler}>
-                                Cancel
-                            </StyledButton>
-                            <StyledButton
-                                variant="contained"
-                                color="primary"
-                                onClick={onSaveClickHandler}
+                    <ButtonsContainer>
+                        {isEditable ? (
+                            <>
+                                <StyledButton onClick={onCancelClickHandler}>
+                                    Cancel
+                                </StyledButton>
+                                <StyledButton
+                                    variant="contained"
+                                    color="primary"
+                                    onClick={onSaveClickHandler}
+                                >
+                                    Save
+                                </StyledButton>
+                            </>
+                        ) : (
+                            <IconButton
+                                aria-label="delete"
+                                onClick={onDeleteClickHandler}
                             >
-                                Save
-                            </StyledButton>
-                        </ButtonsContainer>
-                    )}
+                                <DeleteOutlinedIcon />
+                            </IconButton>
+                        )}
+                    </ButtonsContainer>
                 </HeaderContainer>
                 {isEditable ? (
                     <TextArea
@@ -112,12 +133,12 @@ const Description = styled.p`
     font-family: PT Sans;
     font-size: 18px;
     line-height: 23px;
+    margin: 10px 0 12px 0;
     text-align: justify;
 `;
 
 const ButtonsContainer = styled.div`
     position: absolute;
-    margin: 0 8px 8px 0;
     right: 0;
     bottom: 0;
 `;
