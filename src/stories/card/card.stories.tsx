@@ -45,6 +45,20 @@ export default {
                 type: { summary: 'If true, rounded corners are disabled.' },
                 defaultValue: { summary: false }
             }
+        },
+        onSaveClick: {
+            action: 'clicked',
+            table: {
+                type: { summary: 'Event triggers on save button click' }
+            }
+        },
+        editable: {
+            control: 'boolean',
+            defaultValue: false,
+            table: {
+                type: { summary: 'If true, you can edit card.' },
+                defaultValue: { summary: false }
+            }
         }
     }
 };

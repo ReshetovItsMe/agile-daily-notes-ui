@@ -6,6 +6,7 @@ export interface AnCardComponentProps extends PaperProps {
     number: number;
     title: string;
     description: string;
+    onSaveClick: (value: string) => void;
     editable?: boolean;
 }
 
@@ -14,11 +15,19 @@ const AnCard = ({
     title,
     description,
     editable,
+    onSaveClick,
     ...restProps
 }: AnCardComponentProps) => {
     const [isEditable, setIsEditable] = useState<boolean | undefined>(editable);
+    const [text, setText] = useState<string>(description);
+    const handleDescriptionChange = (
+        event: React.ChangeEvent<HTMLInputElement>
+    ) => {
+        setText(event.target.value);
+    };
     const onDescriptionDoubleClickHandler = () => setIsEditable(!isEditable);
     const onCancelClickHandler = () => setIsEditable(false);
+    const onSaveClickHandler = () => onSaveClick(text);
 
     return (
         <StyledPaper {...restProps}>
@@ -26,30 +35,35 @@ const AnCard = ({
                 <HeaderContainer>
                     <Number>{number}</Number>
                     <Title>{title}</Title>
+                    {isEditable && (
+                        <ButtonsContainer>
+                            <StyledButton onClick={onCancelClickHandler}>
+                                Cancel
+                            </StyledButton>
+                            <StyledButton
+                                variant="contained"
+                                color="primary"
+                                onClick={onSaveClickHandler}
+                            >
+                                Save
+                            </StyledButton>
+                        </ButtonsContainer>
+                    )}
                 </HeaderContainer>
                 {isEditable ? (
+                    <TextArea
+                        id="edit-description-field"
+                        multiline
+                        value={text}
+                        onChange={handleDescriptionChange}
+                        variant="outlined"
+                    />
+                ) : (
                     <Description
                         onDoubleClick={onDescriptionDoubleClickHandler}
                     >
                         {description}
                     </Description>
-                ) : (
-                    <TextAreaContainer>
-                        <TextArea
-                            id="edit-description-field"
-                            multiline
-                            defaultValue={description}
-                            variant="outlined"
-                        />
-                        <ButtonsContainer>
-                            <Button onClick={onCancelClickHandler}>
-                                Cancel
-                            </Button>
-                            <Button variant="contained" color="primary">
-                                Save
-                            </Button>
-                        </ButtonsContainer>
-                    </TextAreaContainer>
                 )}
             </Container>
         </StyledPaper>
@@ -68,6 +82,7 @@ const Container = styled.div`
 const HeaderContainer = styled.div`
     align-items: center;
     display: flex;
+    position: relative;
 `;
 
 const Number = styled.span`
@@ -100,10 +115,6 @@ const Description = styled.p`
     text-align: justify;
 `;
 
-const TextAreaContainer = styled.div`
-    position: relative;
-`;
-
 const ButtonsContainer = styled.div`
     position: absolute;
     margin: 0 8px 8px 0;
@@ -111,11 +122,31 @@ const ButtonsContainer = styled.div`
     bottom: 0;
 `;
 
+const StyledButton = styled(Button)`
+    .MuiButton-label {
+        font-family: 'Roboto', sans-serif;
+        font-size: 14px;
+    }
+    &.MuiButton-containedPrimary {
+        background-color: #3e3afa;
+    }
+`;
+
 const TextArea = styled(TextField)`
     height: 100%;
     width: 100%;
+    &.MuiFormControl-root {
+        margin-top: 10px;
+    }
     .MuiOutlinedInput-multiline {
-        padding: 18.5px 14px 50px 14px;
+        background: #f6f5fd;
+        padding: 6px 10px 6px 10px;
+    }
+    .MuiInputBase-input {
+        color: #081132;
+        font-family: PT Sans;
+        font-size: 18px;
+        line-height: 23px;
     }
 `;
 
